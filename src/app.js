@@ -1,6 +1,8 @@
-import express from "express";
-import routes from "./contollers/index.js";
 import "dotenv/config";
+import express from "express";
+import routes from "./controllers/index.js";
+import client from "./db.js";
+import { addUser } from "./addUser.js";
 
 const app = express();
 const PORT = process.env.PORT;
