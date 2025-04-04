@@ -2,9 +2,12 @@
     "compilerOptions": {
       "target": "ES6",
       "outDir": "./dist",
+      "noEmitOnError": true,
+      "noImplicitAny": true,
       "allowJs": true,
-      "module": "NodeNext",
-      "moduleResolution": "NodeNext"
+      "strict": true,
+      "module": "node16",
+      "moduleResolution": "node16"
     },
     "include": ["src/**/*"]
   }

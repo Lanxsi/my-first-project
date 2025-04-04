@@ -1,6 +1,6 @@
 import client from "./db.js"; 
 
-async function addUser(name, surname, full_name, email, password) {
+async function addUser(name: string, surname: string, full_name: string, email: string, password: string) {
   const query = `
     INSERT INTO users (name, surname, full_name, email, password)
     VALUES ($1, $2, $3, $4, $5)
