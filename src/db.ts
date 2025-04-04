@@ -5,6 +5,7 @@ console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
 
 if (process.env.DB_PORT === undefined) throw Error('The DB_PORT is undefined');
 
+// TODO В тебе значення user, host, database, password можуть бути undefined на них теж перевірки, по нормальному перевіряй всі значення з process.env
 const client = new Client({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
