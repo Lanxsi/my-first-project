@@ -3,7 +3,12 @@ const { Client } = pkg;
 
 console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
 
-if (process.env.DB_PORT === undefined) throw Error('The DB_PORT is undefined');
+  if (process.env.DB_USER === undefined) throw Error('The DB_USER is undefined');
+  if (process.env.DB_HOST === undefined) throw Error('The DB_HOST is undefined');
+  if (process.env.DB_NAME === undefined) throw Error('The DB_NAME is undefined');
+  if (process.env.DB_PASSWORD === undefined) throw Error('The DB_PASSWORD is undefined');
+  if (process.env.DB_PORT === undefined) throw Error('The DB_PORT is undefined');
+
 
 const client = new Client({
   user: process.env.DB_USER,

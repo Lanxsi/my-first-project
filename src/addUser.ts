@@ -1,6 +1,16 @@
 import client from "./db.js"; 
+import { QueryResult } from "pg";
 
-async function addUser(name: string, surname: string, full_name: string, email: string, password: string) {
+interface User {
+  id: number, 
+  name: string, 
+  surname: string, 
+  full_name: string,
+  email: string,
+  password: string;
+}
+
+async function addUser(name: string, surname: string, full_name: string, email: string, password: string): Promise<void> {
   const query = `
     INSERT INTO users (name, surname, full_name, email, password)
     VALUES ($1, $2, $3, $4, $5)
@@ -8,10 +18,12 @@ async function addUser(name: string, surname: string, full_name: string, email: 
   `;
 
   try {
-    const result = await client.query(query, [name, surname, full_name, email, password]);
+    const result: QueryResult<User> = await client.query(query, [name, surname, full_name, email, password]);
     console.log("✅ User added:", result.rows[0]);
-  } catch (err) {
+  } catch (err: unknown) {
+    if (err instanceof Error) {
     console.error("❌ Error adding a user:", err);
+    }
   }
 }
 
